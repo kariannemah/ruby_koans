@@ -25,7 +25,6 @@ class AboutSymbols < Neo::Koan
 
   def test_method_names_become_symbols
     symbols_as_strings = Symbol.all_symbols.map { |x| x.to_s }
-    # when I test this in irb, it's false
     assert_equal true, symbols_as_strings.include?("test_method_names_become_symbols")
   end
 
@@ -33,13 +32,15 @@ class AboutSymbols < Neo::Koan
   #
   # Why do we convert the list of symbols to strings and then compare
   # against the string value rather than against symbols?
+  # A symbol is just a number referred to by a name. So running if :hello
+  # == "hello" would return false.
 
   in_ruby_version("mri") do
     RubyConstant = "What is the sound of one hand clapping?"
     def test_constants_become_symbols
       all_symbols_as_strings = Symbol.all_symbols.map { |x| x.to_s }
 
-      assert_equal false, all_symbols_as_strings.include?(__)
+      assert_equal true, all_symbols_as_strings.include?("RubyConstant")
     end
   end
 

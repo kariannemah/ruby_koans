@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutRegularExpressions < Neo::Koan
   def test_a_pattern_is_a_regular_expression
-    assert_equal Regexp, /pattern/.class
+    assert_equal Regexp, /^.[0-9]/.class
   end
 
   def test_a_regexp_can_search_a_string_for_matching_content
@@ -152,7 +152,9 @@ class AboutRegularExpressions < Neo::Koan
   # THINK ABOUT IT:
   #
   # Explain the difference between a character class ([...]) and alternation (|).
-
+  # [xyz] asks "is next character x, y or z?" while (x | y | z) checks match for x,
+  # and if there isn't a match, it checks for y. no match? it checks for z.
+  # use [...] for readability
   # ------------------------------------------------------------------
 
   def test_scan_is_like_find_all
