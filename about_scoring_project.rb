@@ -29,8 +29,35 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+class Array
+  def same_values?
+    self.uniq.length == 1
+  end
+end
+
 def score(dice)
-  dice = 0
+
+  score = 0
+  frequency_of_number = dice.inject(Hash.new(0)) { |h,v| h[v] += 1; h}
+  dice = dice.sort_by { |v| frequency_of_number[v] }
+
+  if [dice[-1], dice[-2], dice[-3]].same_values? == true
+    triplet = dice.pop(3)
+  end
+
+  points_from_ones = dice.count(1) * 100
+  points_from_fives = dice.count(5) * 50
+
+  if triplet.nil? == true
+    score = score + points_from_ones + points_from_fives
+  elsif triplet == [1,1,1]
+    score = score + 1000 + points_from_ones + points_from_fives
+  elsif triplet.empty? == false
+    score = score + triplet[0] * 100 + points_from_ones + points_from_fives
+  else dice == []
+    score = 0
+  end
+
 end
 
 class AboutScoringProject < Neo::Koan
