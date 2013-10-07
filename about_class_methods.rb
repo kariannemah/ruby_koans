@@ -64,7 +64,7 @@ class AboutClassMethods < Neo::Koan
 
   def test_class_methods_are_independent_of_instance_methods
     fido = Dog2.new
-    assert_equal :instant_level_wag, fido.wag
+    assert_equal :instance_level_wag, fido.wag
     assert_equal :class_level_wag, Dog2.wag
   end
 
@@ -94,7 +94,7 @@ class AboutClassMethods < Neo::Koan
   end
 
   def test_you_can_define_class_methods_inside_the_class
-    assert_equal :dog_class_method, Dog.a_class_method
+    assert_equal :dogs_class_method, Dog.a_class_method
   end
 
   # ------------------------------------------------------------------
@@ -114,7 +114,7 @@ class AboutClassMethods < Neo::Koan
                                end
 
   def test_self_while_inside_class_is_class_object_not_instance
-    assert_equal false, Dog == SelfInsideOfClassStatement
+    assert_equal true, Dog == SelfInsideOfClassStatement
   end
 
   # ------------------------------------------------------------------
