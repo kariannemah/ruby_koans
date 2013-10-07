@@ -34,6 +34,8 @@ class AboutNil < Neo::Koan
     #    obj == nil
     # Why?
     # It's Ruby convention to use obj.nil?
+    # .nil? returns false for all objects except for the object nil
+    # whereas obj == nil compares obj to nil.
 
   end
 
