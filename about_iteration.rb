@@ -28,9 +28,8 @@ class AboutIteration < Neo::Koan
   end
 
   def test_iterating_with_each
-    array = [1, 2, 3]
     sum = 0
-    array.each do |item|
+    [1, 2, 3].each do |item|
       sum += item
     end
     assert_equal 6, sum
@@ -118,7 +117,7 @@ class AboutIteration < Neo::Koan
   #   # code to read 'file'
   #
 
-  # As we won't be using this code to read 'file' again,
+  # As we will need to read 'file' only once,
   # there's no need to assign it to a variable.
   # When you get to the "AboutSandwichCode" koan, recheck your answer.
 
