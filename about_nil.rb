@@ -33,6 +33,8 @@ class AboutNil < Neo::Koan
     # or
     #    obj == nil
     # Why?
+    # It's Ruby convention to use obj.nil?
+
   end
 
 end
