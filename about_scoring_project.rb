@@ -29,19 +29,13 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
-class Array
-  def same_values?
-    self.uniq.length == 1
-  end
-end
-
 def score(dice)
 
   score = 0
   frequency_of_number = dice.inject(Hash.new(0)) { |h,v| h[v] += 1; h}
   dice = dice.sort_by { |v| frequency_of_number[v] }
 
-  if [dice[-1], dice[-2], dice[-3]].same_values? == true
+  if [dice[-1], dice[-2], dice[-3]].uniq.length == 1
     triplet = dice.pop(3)
   end
 
