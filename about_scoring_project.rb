@@ -31,7 +31,6 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
 
-  score = 0
   frequency_of_number = dice.inject(Hash.new(0)) { |h,v| h[v] += 1; h}
   dice = dice.sort_by { |v| frequency_of_number[v] }
 
@@ -44,13 +43,13 @@ def score(dice)
   points_from_ones_and_fives = points_from_ones + points_from_fives
 
   if triplet.nil? == true
-    score = score + points_from_ones_and_fives
+    points_from_ones_and_fives
   elsif triplet == [1,1,1]
-    score = score + 1000 + points_from_ones_and_fives
-  elsif triplet.empty? == false
-    score = score + triplet[0] * 100 + points_from_ones_and_fives
+    1000 + points_from_ones_and_fives
+  elsif triplet != []
+    triplet[0] * 100 + points_from_ones_and_fives
   else dice == []
-    score = 0
+    0
   end
 
 end
