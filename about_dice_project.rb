@@ -6,16 +6,14 @@ class DiceSet
 
   attr_accessor :values
 
-  def initialize(*)
-    super
-    self.values = []
+  def initialize
+    self.values
   end
 
   def roll(n)
-    self.values = []
-    n.times do
-    self.values << rand(6) + 1
-   end
+    self.values = n.times.map do
+      rand(6) + 1
+    end
   end
 
 end

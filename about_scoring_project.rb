@@ -42,13 +42,13 @@ def score(dice)
   points_from_fives = dice.count(5) * 50
   points_from_ones_and_fives = points_from_ones + points_from_fives
 
-  if triplet.nil? == true
+  if triplet.nil?
     points_from_ones_and_fives
   elsif triplet == [1,1,1]
     1000 + points_from_ones_and_fives
   elsif triplet != []
     triplet[0] * 100 + points_from_ones_and_fives
-  else dice == []
+  else
     0
   end
 
